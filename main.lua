@@ -1,5 +1,5 @@
 -- /lua script.reset()
--- /lua script.load("/home/gesslar/blightmud/scripts/main.lua")
+-- /lua script.load("/home/gesslar/git/thresholdbm-bars/main.lua")
 
 ThresholdBM = {}
 ThresholdBM.Vitals = ThresholdBM.Vitals or {}
@@ -108,5 +108,5 @@ gmcp.on_ready(function ()
     blight.status_height(2)
     gmcp.register("Char")
     gmcp.receive("Char.Vitals", function(data) ThresholdBM.CharVitals(data) end)
-    blight.on_dimensions_change(function(width, height) ThresholdBM.DrawBars() end)
-)
+    blight.on_dimensions_change(function(width, height) ThresholdBM.DrawBars(width, height) end)
+end)
