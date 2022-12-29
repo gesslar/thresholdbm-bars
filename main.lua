@@ -45,7 +45,7 @@ function ThresholdBM.DetermineBarWidth()
     if remainder then
         ep_total_width = ep_total_width + 1
     end
-print(hp_total_width, sp_total_width, ep_total_width)
+
     return hp_total_width, sp_total_width, ep_total_width
 end
 
