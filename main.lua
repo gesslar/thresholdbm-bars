@@ -40,7 +40,7 @@ function ThresholdBM.DrawVitals()
     "")
 end
 
-function ThresholdBM.DrawBars()
+function ThresholdBM.DrawBars(width, height)
     local hp    = ThresholdBM.Vitals["hp"] ;
     local hpmax = ThresholdBM.Vitals["maxhp"] ;
     local sp    = ThresholdBM.Vitals["sp"] ;
@@ -49,7 +49,9 @@ function ThresholdBM.DrawBars()
     local epmax = ThresholdBM.Vitals["maxep"] ;
 
     if hp and sp and ep and hpmax and spmax and epmax then
-        local width, height = blight.terminal_dimensions()
+        if width == nil or height == nil then
+            width, height = blight.terminal_dimensions()
+        end
         local bar_width = math.floor( (width-5) / 3)
         local remainder = (width-5) % 3
         local hp_total_width = bar_width
@@ -106,4 +108,5 @@ gmcp.on_ready(function ()
     blight.status_height(2)
     gmcp.register("Char")
     gmcp.receive("Char.Vitals", function(data) ThresholdBM.CharVitals(data) end)
-end)
+    blight.on_dimensions_change(function(width, height) ThresholdBM.DrawBars() end)
+)
