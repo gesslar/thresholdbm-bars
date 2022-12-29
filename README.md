@@ -9,4 +9,4 @@ In Blightmud:
 2. Turn on the plugin `/enable_plugin thresholdbm-bars`
 
 # Demo
-https://github.com/gesslar/thresholdbm-bars/media/2022-12-29_00-34-41.mp4
+https://user-images.githubusercontent.com/1266935/209912137-39990af2-c0b2-4268-baf3-1fcfabe50c1f.mp4
