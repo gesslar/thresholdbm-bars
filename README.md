@@ -4,4 +4,6 @@ This is a plugin for Blightmud to to display health bars as provided through GMC
 No warranty at all. Use at your own risk.
 
 # Installation
-In Blightmud, run: `/add_plugin https://github.com/gesslar/thresholdbm-bars`
+In Blightmud:
+1. Install the plugin `/add_plugin https://github.com/gesslar/thresholdbm-bars`
+2. Turn on the plugin `/enable_plugin thresholdbm-bars`
