@@ -60,11 +60,13 @@ function ThresholdBM.DrawVitals()
     local spper = 0 ;
     local epper = 0 ;
 
-    if hp and sp and ep and hpmax and spmax and epmax then
-        hpper = math.floor(hp / hpmax * 100) ;
-        spper = math.floor(sp / spmax * 100) ;
-        epper = math.floor(ep / epmax * 100) ;
+    if not hp or not sp or not ep or not hpmax or not spmax or not epmax then
+        return
     end
+
+    hpper = math.floor(hp / hpmax * 100) ;
+    spper = math.floor(sp / spmax * 100) ;
+    epper = math.floor(ep / epmax * 100) ;
 
     local   hp_total_width,
     sp_total_width,
@@ -73,7 +75,7 @@ function ThresholdBM.DrawVitals()
     local hp_inner_width = hp_total_width - 6
     local sp_inner_width = sp_total_width - 6
     local ep_inner_width = ep_total_width - 6
-print(hp_inner_width, sp_inner_width, ep_inner_width)
+
     local hp_bar =
         string.format(".HP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", hp, hpmax, hpper), hp_inner_width))
     local sp_bar =
