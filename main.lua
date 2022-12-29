@@ -5,6 +5,7 @@ ThresholdBM = {}
 ThresholdBM.Vitals = ThresholdBM.Vitals or {}
 ThresholdBM.Status = ThresholdBM.Status or {}
 ThresholdBM.Colors = ThresholdBM.Colors or {
+    bracket = C_WHITE,
     hp_fg = "\x1b[38;5;10m",
     hp_bg = "\x1b[38;5;2m",
     sp_fg = "\x1b[38;5;14m",
@@ -13,7 +14,7 @@ ThresholdBM.Colors = ThresholdBM.Colors or {
     ep_bg = "\x1b[38;5;3m",
 }
 ThresholdBM.Dots = ThresholdBM.Dots or {
-    "┉", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█", "▉", "█",
+    "░", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█", "▉", "█",
 }
 
 function ThresholdBM.DrawVitals()
@@ -52,8 +53,9 @@ function ThresholdBM.DrawBars(width, height)
         if width == nil or height == nil then
             width, height = blight.terminal_dimensions()
         end
-        local bar_width = math.floor( (width-5) / 3)
-        local remainder = (width-5) % 3
+        width = width - 7
+        local bar_width = (math.floor(width / 3)) - 2
+        local remainder = width % 3
         local hp_total_width = bar_width
         local sp_total_width = bar_width
         local ep_total_width = bar_width
@@ -81,12 +83,16 @@ function ThresholdBM.DrawBars(width, height)
         local hpbar, spbar, epbar
 
         blight.status_line(1,
+            ThresholdBM.Colors.bracket .. "[" ..
             ThresholdBM.Colors.hp_fg .. string.rep(ThresholdBM.Dots[11], hp_width) .. C_RESET ..
             ThresholdBM.Colors.hp_bg .. string.rep(ThresholdBM.Dots[1],  hp_remainder) .. C_RESET ..
+            ThresholdBM.Colors.bracket .. "] ["..
             ThresholdBM.Colors.sp_fg .. string.rep(ThresholdBM.Dots[11], sp_width) .. C_RESET ..
             ThresholdBM.Colors.sp_bg .. string.rep(ThresholdBM.Dots[1],  sp_remainder) .. C_RESET ..
+            ThresholdBM.Colors.bracket .. "] ["..
             ThresholdBM.Colors.ep_fg .. string.rep(ThresholdBM.Dots[11], ep_width) .. C_RESET ..
             ThresholdBM.Colors.ep_bg .. string.rep(ThresholdBM.Dots[1],  ep_remainder) .. C_RESET ..
+            ThresholdBM.Colors.bracket .. "]" ..
         "")
     end
 end
@@ -101,6 +107,11 @@ function ThresholdBM.CharVitals(data)
     ThresholdBM.DrawVitals()
     ThresholdBM.DrawBars()
 end
+
+-- function ThresholdBM.CharStatus(data)
+--     ThresholdBM.UpdateFoe(data)
+--     ThresholdBM.
+-- end
 
 gmcp.on_ready(function ()
     ThresholdBM.DrawVitals()
