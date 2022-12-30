@@ -84,11 +84,6 @@ function ThresholdBM.DrawVitals()
         string.format("EP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", ep, epmax, epper), ep_inner_width))
 
     blight.status_line(0, hp_bar .. " " .. sp_bar .. " " .. ep_bar)
-    -- blight.status_line(0,
-    --     "HP: [ "..tostring(hp).."/"..tostring(hpmax).." ("..tostring(hpper).."%) ] " ..
-    --     "SP: [ "..tostring(sp).."/"..tostring(spmax).." ("..tostring(spper).."%) ] " ..
-    --     "EP: [ "..tostring(ep).."/"..tostring(epmax).." ("..tostring(epper).."%) ] " ..
-    -- "")
 end
 
 function ThresholdBM.DrawBars(width, height)
