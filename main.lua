@@ -79,9 +79,9 @@ function ThresholdBM.DrawVitals()
     local hp_bar =
         string.format(".HP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", hp, hpmax, hpper), hp_inner_width))
     local sp_bar =
-        string.format("SP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", sp, spmax, spper), sp_inner_width))
+        string.format( "SP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", sp, spmax, spper), sp_inner_width))
     local ep_bar =
-        string.format("EP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", ep, epmax, epper), ep_inner_width))
+        string.format( "EP: [%s]  ", ThresholdBM.CenterText(string.format("%d/%d %.0f%%", ep, epmax, epper), ep_inner_width))
 
     blight.status_line(0, hp_bar .. " " .. sp_bar .. " " .. ep_bar)
 end
